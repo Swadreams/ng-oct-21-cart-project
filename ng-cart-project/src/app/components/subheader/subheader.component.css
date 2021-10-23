@@ -1,0 +1,16 @@
+.ng-category {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.ng-category-item {
+  text-align: center;
+  width: 100px;
+  height: auto;
+}
+
+.ng-category-image {
+  width: 64px;
+  height: 64px;
+}

@@ -1,0 +1,17 @@
+.ng-card {
+  width: 250px;
+  height: auto;
+  text-align: center;
+}
+
+.ng-product-image {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+}
+
+.ng-product-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
