@@ -2,6 +2,7 @@
   width: 250px;
   height: auto;
   text-align: center;
+  margin: 25px;
 }
 
 .ng-product-image {
@@ -14,4 +15,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.ng-products {
+  display: flex;
+  flex-wrap: wrap;
 }

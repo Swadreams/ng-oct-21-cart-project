@@ -1,10 +1,18 @@
-<div class="card ng-card">
-  <img [src]="products.image" class="card-img-top ng-product-image" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title ng-product-title">{{ products.title }}</h5>
-    <p class="card-text ng-product-title">
-      {{ products.description }}
-    </p>
-    <a href="#" class="btn btn-primary">Add to Cart</a>
+<div class="ng-products container">
+  <div class="card ng-card" *ngFor="let product of products">
+    <img
+      [src]="product.image"
+      class="card-img-top ng-product-image"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title ng-product-title">{{ product.title }}</h5>
+      <p class="card-text ng-product-title">
+        {{ product.description }}
+      </p>
+      <a href="#" class="btn btn-primary">Add to Cart</a>
+    </div>
   </div>
 </div>
+
+<div class="alert alert-danger" *ngIf="error">{{ error }}</div>
