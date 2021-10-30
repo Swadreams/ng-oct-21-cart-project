@@ -1,0 +1,13 @@
+.prdouct-image {
+  width: 230px;
+}
+
+.ng-product-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-footer {
+  text-align: right;
+}

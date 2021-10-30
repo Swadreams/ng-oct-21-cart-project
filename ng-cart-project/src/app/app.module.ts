@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SummaryPipe } from './shared/summary.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SignupComponent } from './components/signup/signup.component';
     SummaryPipe,
     LoginComponent,
     SignupComponent,
+    ProductDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
