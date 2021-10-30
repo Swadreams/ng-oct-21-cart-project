@@ -1,0 +1,67 @@
+.ng-login-form {
+  width: 675px;
+  height: 528px;
+
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0px 0px 20px #0e6dfd;
+}
+
+.ng-login-form .row {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.ng-login-left {
+  padding: 40px 33px;
+  background-image: url("https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png");
+  background-position: center 85%;
+  background-repeat: no-repeat;
+}
+
+.ng-login-left-subtitle {
+  font-size: 18px;
+  color: #dbdbdb;
+}
+
+.ng-login-right {
+  padding: 56px 35px 16px;
+  position: relative;
+}
+
+.ng-input {
+  padding: 8px 10px 10px 0;
+  width: 100%;
+  color: #000;
+  font-size: inherit;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 34px;
+}
+
+.ng-submit {
+  background: #fb641b;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  border: none;
+  color: #fff;
+  width: 100%;
+  height: 48px;
+}
+
+.ng-link-new-account {
+  color: #2874f0;
+  font-weight: 500;
+  text-decoration: none;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  right: 0;
+}

@@ -10,6 +10,7 @@ import { ExamplesComponent } from './components/examples/examples.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SummaryPipe } from './shared/summary.pipe';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SummaryPipe } from './shared/summary.pipe';
     ProductComponent,
     ExamplesComponent,
     SummaryPipe,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
