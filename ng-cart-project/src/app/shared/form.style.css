@@ -1,4 +1,4 @@
-/* .ng-login-form {
+.ng-form {
   width: 675px;
   height: 528px;
 
@@ -11,25 +11,25 @@
   box-shadow: 0px 0px 20px #0e6dfd;
 }
 
-.ng-login-form .row {
+.ng-form .row {
   padding: 0;
   margin: 0;
   height: 100%;
 }
 
-.ng-login-left {
+.ng-left {
   padding: 40px 33px;
   background-image: url("https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png");
   background-position: center 85%;
   background-repeat: no-repeat;
 }
 
-.ng-login-left-subtitle {
+.ng-left-subtitle {
   font-size: 18px;
   color: #dbdbdb;
 }
 
-.ng-login-right {
+.ng-right {
   padding: 56px 35px 16px;
   position: relative;
 }
@@ -64,4 +64,4 @@
   width: 100%;
   left: 0;
   right: 0;
-} */
+}

@@ -1,0 +1,12 @@
+.ng-form-col {
+  padding: 0;
+}
+
+.ng-form {
+  width: 60%;
+  height: 600px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
