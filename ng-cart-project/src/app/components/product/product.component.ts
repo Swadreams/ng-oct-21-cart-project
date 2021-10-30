@@ -1,19 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdcutService } from 'src/app/shared/prodcut.service';
+import { IProduct } from 'src/app/shared/product.interface';
 import { PRODUCTS } from 'src/app/shared/products';
-
-interface IProduct {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
 
 @Component({
   selector: 'app-product',
@@ -35,5 +23,9 @@ export class ProductComponent implements OnInit {
       (res: IProduct[]) => (this.products = res),
       (err: any) => (this.error = err.message)
     );
+  }
+
+  onAddToCart(product: IProduct): void {
+    this.productService.addToCart(product);
   }
 }
