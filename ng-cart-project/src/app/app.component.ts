@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
             ? false
             : true;
       }
-      console.log(event);
     });
   }
 }

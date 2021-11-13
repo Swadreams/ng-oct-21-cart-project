@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -16,7 +17,16 @@ export class ProductDetailsComponent implements OnInit {
     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
     rating: { rate: 3.9, count: 120 },
   };
-  constructor() {}
 
-  ngOnInit(): void {}
+  productId: number | null = null;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    // console.log(this.route.snapshot.params.id);
+    // this.route.params.subscribe((param) => console.log(param));
+    // this.route.paramMap.subscribe((param) => console.log(param));
+    // this.route.queryParams.subscribe((params) => console.log(params));
+    this.productId = this.route.snapshot.params.id;
+  }
 }
