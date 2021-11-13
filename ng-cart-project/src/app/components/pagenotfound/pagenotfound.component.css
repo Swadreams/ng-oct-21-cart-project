@@ -1,0 +1,14 @@
+.ng-page-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 200px;
+}
+
+.subtitle {
+  font-size: 100px;
+}

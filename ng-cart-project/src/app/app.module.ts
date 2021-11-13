@@ -13,6 +13,7 @@ import { SummaryPipe } from './shared/summary.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     LoginComponent,
     SignupComponent,
     ProductDetailsComponent,
+    PagenotfoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
