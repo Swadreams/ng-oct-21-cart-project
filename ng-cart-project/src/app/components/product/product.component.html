@@ -1,5 +1,9 @@
 <div class="ng-products container">
-  <div class="card ng-card" *ngFor="let product of products">
+  <div
+    class="card ng-card"
+    *ngFor="let product of products"
+    [routerLink]="['/products', 1]"
+  >
     <img
       [src]="product.image"
       class="card-img-top ng-product-image"

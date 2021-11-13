@@ -16,6 +16,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { RatingsComponent } from './components/product-details/ratings/ratings.component';
 import { ServicesComponent } from './components/product-details/services/services.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ServicesComponent } from './components/product-details/services/service
     PagenotfoundComponent,
     RatingsComponent,
     ServicesComponent,
+    CartComponent,
+    CheckoutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
