@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
 
   productId: number | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     // console.log(this.route.snapshot.params.id);
@@ -28,5 +28,9 @@ export class ProductDetailsComponent implements OnInit {
     // this.route.paramMap.subscribe((param) => console.log(param));
     // this.route.queryParams.subscribe((params) => console.log(params));
     this.productId = this.route.snapshot.params.id;
+  }
+
+  navigateToRating() {
+    this.router.navigate(['rating'], { relativeTo: this.route });
   }
 }

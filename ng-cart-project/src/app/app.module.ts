@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { RatingsComponent } from './components/product-details/ratings/ratings.component';
+import { ServicesComponent } from './components/product-details/services/services.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     SignupComponent,
     ProductDetailsComponent,
     PagenotfoundComponent,
+    RatingsComponent,
+    ServicesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

@@ -20,6 +20,17 @@
             Rating : {{ product.rating.rate }} | Vote Count:
             {{ product.rating.count }}
           </p>
+
+          <button
+            class="btn btn-outline-dark me-3"
+            (click)="navigateToRating()"
+          >
+            Ratings
+          </button>
+          <button class="btn btn-outline-primary" routerLink="./services">
+            Services
+          </button>
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
