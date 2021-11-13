@@ -9,13 +9,14 @@ import { RatingsComponent } from './components/product-details/ratings/ratings.c
 import { ServicesComponent } from './components/product-details/services/services.component';
 import { ProductComponent } from './components/product/product.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'products', component: ProductComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
   {
     path: 'products/:id',
     component: ProductDetailsComponent,
@@ -30,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
