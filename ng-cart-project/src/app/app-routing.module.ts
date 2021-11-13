@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'products', component: ProductComponent },
   { path: 'products-detail', component: ProductDetailsComponent },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent },
 ];
 
