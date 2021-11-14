@@ -26,6 +26,11 @@
             *ngIf="username.touched && username.errors.email"
             >Please enter valid email address</small
           >
+          <small
+            class="invalid-feedback"
+            *ngIf="username.touched && username.errors.forbidden"
+            >{{ username.value }} is not allowed</small
+          >
         </div>
         <div class="form-group ng-form-field">
           <input
@@ -47,6 +52,12 @@
             *ngIf="password.touched && password.errors?.minlength"
             >Password should be more than
             {{ password.errors?.minlength?.requiredLength }} characters.</small
+          >
+
+          <small
+            class="invalid-feedback"
+            *ngIf="password.touched && password.errors.forbidden"
+            >{{ password.value }} is not allowed</small
           >
         </div>
         <button type="submit" class="ng-submit">Signup</button>
