@@ -38,10 +38,28 @@
             class="ng-input"
             name="password"
             ngModel
+            class="form-control ng-input"
             placeholder="Enter password"
+            #password="ngModel"
+            required
+            minlength="5"
+            [ngClass]="password.invalid ? 'is-invalid' : ''"
           />
+          <small
+            class="invalid-feedback ms-2"
+            *ngIf="password.touched && password.errors?.required"
+            >Password is required</small
+          >
+          <small
+            class="invalid-feedback ms-2"
+            *ngIf="password.touched && password.errors?.minlength"
+            >Password should be more than
+            {{ password.errors?.minlength?.requiredLength }} characters.</small
+          >
         </div>
-        <button type="submit" class="ng-submit">Login</button>
+        <button type="submit" class="ng-submit" [disabled]="loginForm.invalid">
+          Login
+        </button>
       </form>
 
       <a class="ng-link-new-account">New to NgCart? Create an account</a>
