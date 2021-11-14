@@ -35,10 +35,18 @@
             class="form-control ng-input"
             placeholder="Enter password"
             formControlName="password"
+            [class.is-invalid]="password.touched && password.invalid"
           />
-          <small class="invalid-feedback ms-2">Password is required</small>
-          <small class="invalid-feedback ms-2"
-            >Password should be more than characters.</small
+          <small
+            class="invalid-feedback ms-2"
+            *ngIf="password.touched && password.errors?.required"
+            >Password is required</small
+          >
+          <small
+            class="invalid-feedback ms-2"
+            *ngIf="password.touched && password.errors?.minlength"
+            >Password should be more than
+            {{ password.errors?.minlength?.requiredLength }} characters.</small
           >
         </div>
         <button type="submit" class="ng-submit">Signup</button>
