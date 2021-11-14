@@ -7,9 +7,40 @@
       </p>
     </div>
     <div class="col-7 ng-right">
-      <form>
-        <input type="text" class="ng-input" placeholder="Enter email address" />
-        <input type="password" class="ng-input" placeholder="Enter password" />
+      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <div class="form-group ng-form-field">
+          <input
+            type="text"
+            class="form-control ng-input"
+            name="username"
+            ngModel
+            placeholder="Enter email address"
+            #username="ngModel"
+            required
+            email
+            minlength="3"
+            [ngClass]="username.invalid ? 'is-invalid' : ''"
+          />
+          <small
+            class="invalid-feedback ms-2"
+            *ngIf="username.touched && username.errors?.required"
+            >Email is required</small
+          >
+          <small
+            class="invalid-feedback"
+            *ngIf="username.touched && username.errors?.email"
+            >Please enter valid email address</small
+          >
+        </div>
+        <div class="form-group ng-form-field">
+          <input
+            type="password"
+            class="ng-input"
+            name="password"
+            ngModel
+            placeholder="Enter password"
+          />
+        </div>
         <button type="submit" class="ng-submit">Login</button>
       </form>
 

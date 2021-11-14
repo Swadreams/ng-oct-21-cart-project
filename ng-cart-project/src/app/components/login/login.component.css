@@ -65,3 +65,7 @@
   left: 0;
   right: 0;
 } */
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}

@@ -35,14 +35,21 @@
 }
 
 .ng-input {
-  padding: 8px 10px 10px 0;
+  padding: 10px;
   width: 100%;
+}
+
+.ng-input.ng-untouched,
+.ng-input.ng-valid {
   color: #000;
   font-size: inherit;
   background: #fff;
   border: none;
   border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 34px;
+}
+
+.ng-form-field {
+  margin-bottom: 20px;
 }
 
 .ng-submit {
