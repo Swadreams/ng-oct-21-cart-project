@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SubheaderComponent } from './components/subheader/subheader.component';
 import { ProductComponent } from './components/product/product.component';
 import { ExamplesComponent } from './components/examples/examples.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SummaryPipe } from './shared/summary.pipe';
 import { LoginComponent } from './components/login/login.component';
@@ -36,7 +36,13 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CartComponent,
     CheckoutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
