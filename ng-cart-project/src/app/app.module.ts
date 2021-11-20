@@ -18,6 +18,7 @@ import { RatingsComponent } from './components/product-details/ratings/ratings.c
 import { ServicesComponent } from './components/product-details/services/services.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ServicesComponent,
     CartComponent,
     CheckoutComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

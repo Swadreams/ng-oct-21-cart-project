@@ -14,7 +14,11 @@ export class ProdcutService {
   constructor(private http: HttpClient) {}
 
   getProducts(): any {
-    return this.http.get('https://fakestoreapi.com/products');
+    return this.http.get('https://node-merncart.vercel.app/product');
+  }
+
+  getProduct(id: string) {
+    return this.http.get(`https://node-merncart.vercel.app/product/${id}`);
   }
 
   addToCart(item: IProduct) {

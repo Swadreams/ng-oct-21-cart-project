@@ -1,9 +1,6 @@
+<app-loader *ngIf="loader"></app-loader>
 <div class="ng-products container">
-  <div
-    class="card ng-card"
-    *ngFor="let product of products"
-    [routerLink]="['/products', 1]"
-  >
+  <div class="card ng-card" *ngFor="let product of products">
     <img
       [src]="product.image"
       class="card-img-top ng-product-image"
@@ -14,9 +11,19 @@
       <p class="card-text ng-product-title">
         {{ product.description }}
       </p>
-      <a href="#" class="btn btn-primary" (click)="onAddToCart(product)"
-        >Add to Cart</a
-      >
+      <div class="row">
+        <div class="col-12">
+          <button
+            class="btn btn-info me-2"
+            [routerLink]="['/products', product._id]"
+          >
+            Details
+          </button>
+          <a class="btn btn-primary" (click)="onAddToCart(product)"
+            >Add to Cart</a
+          >
+        </div>
+      </div>
     </div>
   </div>
 </div>

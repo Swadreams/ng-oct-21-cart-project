@@ -56,7 +56,7 @@
 
           <small
             class="invalid-feedback"
-            *ngIf="password.touched && password.errors.forbidden"
+            *ngIf="password.touched && password.errors?.forbidden"
             >{{ password.value }} is not allowed</small
           >
         </div>

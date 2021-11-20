@@ -11,6 +11,7 @@ import { PRODUCTS } from 'src/app/shared/products';
 export class ProductComponent implements OnInit {
   products: IProduct[] = [];
   error: any;
+  loader = false;
 
   showGreen = false;
 
@@ -19,10 +20,16 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     // this.products = this.productService.getProducts();
 
-    this.productService.getProducts().subscribe(
-      (res: IProduct[]) => (this.products = res),
-      (err: any) => (this.error = err.message)
-    );
+    this.loader = true;
+    this.productService
+      .getProducts()
+      .subscribe(
+        (res: IProduct[]) => (this.products = res),
+        (err: any) => (this.error = err.message)
+      )
+      .add(() => {
+        this.loader = false;
+      });
   }
 
   onAddToCart(product: IProduct): void {
