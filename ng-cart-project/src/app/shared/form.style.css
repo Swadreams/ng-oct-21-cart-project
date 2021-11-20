@@ -62,7 +62,7 @@
 }
 
 button:disabled {
-  background-color: lightgr;
+  background-color: lightgray;
 }
 
 .ng-link-new-account {

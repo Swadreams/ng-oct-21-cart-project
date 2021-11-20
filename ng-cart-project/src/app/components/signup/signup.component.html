@@ -1,3 +1,4 @@
+<app-loader *ngIf="isLoading"></app-loader>
 <div class="ng-form">
   <div class="row">
     <div class="col-5 bg-primary ng-left">
@@ -17,18 +18,18 @@
           />
           <small
             class="invalid-feedback ms-2"
-            *ngIf="username.touched && username.errors.required"
+            *ngIf="username.touched && username.errors?.required"
           >
             Email is required</small
           >
           <small
             class="invalid-feedback"
-            *ngIf="username.touched && username.errors.email"
+            *ngIf="username.touched && username.errors?.email"
             >Please enter valid email address</small
           >
           <small
             class="invalid-feedback"
-            *ngIf="username.touched && username.errors.forbidden"
+            *ngIf="username.touched && username.errors?.forbidden"
             >{{ username.value }} is not allowed</small
           >
         </div>
@@ -60,8 +61,17 @@
             >{{ password.value }} is not allowed</small
           >
         </div>
-        <button type="submit" class="ng-submit">Signup</button>
+        <button type="submit" class="ng-submit" [disabled]="signUpForm.invalid">
+          Signup
+        </button>
       </form>
+
+      <!-- <h5 class="text-danger text-center m-5">{{ error }}</h5> -->
+      <div *ngIf="success">
+        <h5 class="text-success text-center mt-5">{{ success }}</h5>
+        <h6 class="text-center text-info">Please click below link to login.</h6>
+      </div>
+
       <a class="ng-link-new-account" routerLink="/login"
         >Already have an account? Please login</a
       >

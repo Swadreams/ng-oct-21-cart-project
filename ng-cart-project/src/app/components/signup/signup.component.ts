@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AuthService } from 'src/app/shared/auth.service';
 
 function forbiddenNameValidator(
   control: AbstractControl,
@@ -25,9 +26,12 @@ function forbiddenNameValidator1(restrictedWord: string) {
   styleUrls: ['../../shared/form.style.css', './signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   signUpForm: any;
+  isLoading = false;
+  success = '';
+  error = '';
 
   get username() {
     return this.signUpForm.controls.username;
@@ -67,6 +71,26 @@ export class SignupComponent implements OnInit {
   }
 
   onSignup() {
-    console.log(this.signUpForm);
+    this.isLoading = true;
+    const data = this.signUpForm.value;
+
+    const payload = {
+      email: data.username,
+      password: data.password,
+    };
+
+    this.authService
+      .signup(payload)
+      .subscribe(
+        (response: any) => {
+          this.success = response.message;
+        },
+        (err) => {
+          this.error = err.error.message;
+        }
+      )
+      .add(() => {
+        this.isLoading = false;
+      });
   }
 }
