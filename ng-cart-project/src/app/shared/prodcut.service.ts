@@ -14,11 +14,11 @@ export class ProdcutService {
   constructor(private http: HttpClient) {}
 
   getProducts(): any {
-    return this.http.get('https://node-merncart.vercel.app/product');
+    return this.http.get('/product');
   }
 
   getProduct(id: string) {
-    return this.http.get(`https://node-merncart.vercel.app/product/${id}`);
+    return this.http.get(`/product/${id}`);
   }
 
   addToCart(item: IProduct) {

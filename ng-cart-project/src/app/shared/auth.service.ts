@@ -29,11 +29,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signup(data: IUser) {
-    return this.http.post(`${environment.baseUrl}/user/register`, data);
+    return this.http.post(`/user/register`, data);
   }
 
   login(data: IUser) {
-    return this.http.post(`${environment.baseUrl}/user/login`, data);
+    return this.http.post(`/user/login`, data);
   }
 
   logout() {}
@@ -43,14 +43,14 @@ export class AuthService {
   }
 
   updateProfile(data: IProfile) {
-    return this.http.post(`${environment.baseUrl}/user/profile`, data);
+    return this.http.post(`/user/profile`, data);
   }
 
   updateAddress(data: IAddress[]) {
-    return this.http.post(`${environment.baseUrl}/user/address`, data);
+    return this.http.post(`/user/address`, data);
   }
 
   removeAddress(id: String) {
-    return this.http.delete(`${environment.baseUrl}/user/address/${id}`);
+    return this.http.delete(`/user/address/${id}`);
   }
 }

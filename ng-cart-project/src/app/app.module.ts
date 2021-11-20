@@ -8,7 +8,7 @@ import { SubheaderComponent } from './components/subheader/subheader.component';
 import { ProductComponent } from './components/product/product.component';
 import { ExamplesComponent } from './components/examples/examples.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SummaryPipe } from './shared/summary.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -19,6 +19,7 @@ import { ServicesComponent } from './components/product-details/services/service
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ApiInterceptor } from './shared/api.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,13 @@ import { LoaderComponent } from './components/loader/loader.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
