@@ -8,12 +8,23 @@ import { ProdcutService } from 'src/app/shared/prodcut.service';
 })
 export class HeaderComponent implements OnInit {
   productCount = 0;
+  isLogin = false;
 
   constructor(private productService: ProdcutService) {}
 
   ngOnInit(): void {
+    const session = sessionStorage.getItem('session');
+    if (session) {
+      this.isLogin = true;
+    }
+
     this.productService.cartLength.subscribe((length: any) => {
       this.productCount = length;
     });
+  }
+
+  logout() {
+    sessionStorage.clear();
+    this.isLogin = false;
   }
 }

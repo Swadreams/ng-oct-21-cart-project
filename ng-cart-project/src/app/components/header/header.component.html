@@ -11,7 +11,16 @@
         <i class="fas fa-search ng-search-icon"></i>
       </div>
       <div>
-        <button class="btn btn-light me-5" routerLink="/login">Login</button>
+        <button *ngIf="!isLogin" class="btn btn-light me-5" routerLink="/login">
+          Login
+        </button>
+        <button
+          *ngIf="isLogin"
+          class="btn btn-outline-light me-5"
+          (click)="logout()"
+        >
+          Logout
+        </button>
         <span class="navbar-text">
           <span class="badge bg-danger">{{ productCount }}</span>
           <i class="fas fa-cart-plus ng-cart-icon"></i>

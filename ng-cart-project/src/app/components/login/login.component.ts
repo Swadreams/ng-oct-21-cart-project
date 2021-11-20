@@ -20,11 +20,12 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(form.value)
       .subscribe(
-        () => {
+        (response: any) => {
+          sessionStorage.setItem('session', JSON.stringify(response.user));
           this.router.navigate(['/products']);
         },
         (error) => {
-          this.error = error.message;
+          this.error = error.error.message;
         }
       )
       .add(() => {

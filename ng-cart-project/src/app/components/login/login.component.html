@@ -63,6 +63,10 @@
         </button>
       </form>
 
+      <div class="row mt-5" *ngIf="error">
+        <h6 class="text-danger">{{ error }}</h6>
+      </div>
+
       <a class="ng-link-new-account" routerLink="/signup"
         >New to NgCart? Create an account</a
       >
