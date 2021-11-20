@@ -1,3 +1,4 @@
+<app-loader *ngIf="isLoading"></app-loader>
 <div class="ng-form">
   <div class="row">
     <div class="col-5 bg-primary ng-left">
@@ -12,7 +13,7 @@
           <input
             type="text"
             class="form-control ng-input"
-            name="username"
+            name="email"
             ngModel
             placeholder="Enter email address"
             #username="ngModel"
