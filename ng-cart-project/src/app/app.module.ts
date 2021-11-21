@@ -20,6 +20,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ApiInterceptor } from './shared/api.interceptor';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ApiInterceptor } from './shared/api.interceptor';
     CartComponent,
     CheckoutComponent,
     LoaderComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

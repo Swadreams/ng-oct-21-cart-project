@@ -1,0 +1,210 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="card m-5" *ngIf="profile">
+  <div class="card-header">
+    <h4>Welcome {{ profile.name }}</h4>
+  </div>
+
+  <div class="card-body">
+    <div class="alert alert-success" *ngIf="success">{{ success }}</div>
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+    <table class="table table-striped p-2">
+      <tbody>
+        <tr>
+          <td>Email</td>
+          <td>:</td>
+          <td>{{ profile.email }}</td>
+        </tr>
+        <tr>
+          <td>
+            <h6>Details</h6>
+          </td>
+          <td></td>
+          <td style="text-align: right">
+            <button
+              class="btn btn-outline-dark btn-sm"
+              (click)="toggleDetails()"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="editDetails">
+          <td colspan="3">
+            <form [formGroup]="detailsForm">
+              <div class="row">
+                <div class="col-sm-12 m-3" style="display: flex">
+                  <div class="col-4">Name</div>
+                  <div class="col-2">:</div>
+                  <div class="col-6">
+                    <input type="text" formControlName="name" />
+                  </div>
+                </div>
+                <div class="col-sm-12 m-3" style="display: flex">
+                  <div class="col-4">Phone</div>
+                  <div class="col-2">:</div>
+                  <div class="col-6">
+                    <input type="text" formControlName="phone" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button
+                    class="btn btn-primary me-3"
+                    (click)="updateProfile()"
+                  >
+                    Save
+                  </button>
+                  <button class="btn btn-warning" (click)="toggleDetails()">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+          </td>
+        </tr>
+
+        <ng-container *ngIf="!editDetails">
+          <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td>{{ profile.name }}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>:</td>
+            <td>{{ profile.phone }}</td>
+          </tr>
+        </ng-container>
+
+        <tr>
+          <td colspan="3">
+            <h6>Address</h6>
+          </td>
+        </tr>
+
+        <tr *ngIf="!profile.address.length">
+          <td colspan="3" *ngIf="!editAddress">
+            <div class="text-center p-5">
+              <h6>It looks you don't have address in your profile</h6>
+              <button
+                class="btn btn-primary btn-sm"
+                (click)="showAddressForm()"
+              >
+                Add Address
+              </button>
+            </div>
+          </td>
+          <!-- <td colspan="3" *ngIf="editAddress">
+            <h1>Length: {{ addressForm.value.address.length }}</h1>
+            <form [formGroup]="addressForm">
+              <table
+                class="table"
+                formArrayName="address"
+                *ngFor="
+                  let address of addressForm.value.address;
+                  let i = index;
+                  trackBy: trackByFn
+                "
+              >
+                <ng-container [formGroupName]="i">
+                  <tr></tr>
+                  <tr>
+                    <td>Address Title</td>
+                    <td>:</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control ng-form-control"
+                        formControlName="title"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Address Line 1</td>
+                    <td>:</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control ng-form-control"
+                        formControlName="addressLine1"
+                      />
+                    </td>
+
+                    <td>Address Line 2</td>
+                    <td>:</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control ng-form-control"
+                        formControlName="addressLine2"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>City</td>
+                    <td>:</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control ng-form-control"
+                        formControlName="city"
+                      />
+                    </td>
+
+                    <td>Zip</td>
+                    <td>:</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control ng-form-control"
+                        formControlName="zip"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>State</td>
+                    <td>:</td>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control ng-form-control"
+                        formControlName="state"
+                      />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                </ng-container>
+              </table>
+              <div class="row" style="text-align: center">
+                <div class="col-12">
+                  <button
+                    class="btn btn-primary btn-sm me-3"
+                    (click)="addAddress()"
+                  >
+                    Save
+                  </button>
+                  <button
+                    class="btn btn-warning btn-sm me-3"
+                    (click)="toggleAddress()"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="btn btn-outline-primary btn-sm"
+                    (click)="createAddressForm()"
+                  >
+                    Add More..
+                  </button>
+                </div>
+              </div>
+            </form>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

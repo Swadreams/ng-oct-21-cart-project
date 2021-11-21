@@ -14,6 +14,20 @@
         <button *ngIf="!isLogin" class="btn btn-light me-5" routerLink="/login">
           Login
         </button>
+
+        <button
+          class="btn btn-light me-3"
+          *ngIf="isLogin"
+          routerLink="/profile"
+        >
+          <img
+            src="https://www.pngkit.com/png/full/128-1280585_user-icon-fa-fa-user-circle.png"
+            alt=""
+            height="24px"
+            width="24px"
+          />
+        </button>
+
         <button
           *ngIf="isLogin"
           class="btn btn-outline-light me-5"

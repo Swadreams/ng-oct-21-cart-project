@@ -39,7 +39,7 @@ export class AuthService {
   logout() {}
 
   getProfile() {
-    return this.http.get(environment.baseUrl + '/user/profile');
+    return this.http.get('/user/profile');
   }
 
   updateProfile(data: IProfile) {

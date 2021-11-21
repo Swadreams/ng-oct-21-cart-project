@@ -8,6 +8,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { RatingsComponent } from './components/product-details/ratings/ratings.component';
 import { ServicesComponent } from './components/product-details/services/services.component';
 import { ProductComponent } from './components/product/product.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AuthGuard } from './shared/auth.guard';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'products/:id',
     component: ProductDetailsComponent,
