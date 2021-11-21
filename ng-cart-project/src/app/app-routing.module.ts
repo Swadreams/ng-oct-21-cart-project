@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'rating', pathMatch: 'full' },
     ],
   },
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent },
 ];
 

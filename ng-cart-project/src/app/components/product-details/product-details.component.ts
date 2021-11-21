@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdcutService } from 'src/app/shared/prodcut.service';
+import { ProdcutService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-product-details',

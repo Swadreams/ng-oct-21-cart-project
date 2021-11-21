@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdcutService } from 'src/app/shared/prodcut.service';
+
 import { IProduct } from 'src/app/shared/product.interface';
-import { PRODUCTS } from 'src/app/shared/products';
+import { ProdcutService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-product',

@@ -18,8 +18,13 @@ export class ApiInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     console.log('Interceptor :', req);
 
+    const session = JSON.parse(sessionStorage.getItem('session') as string);
+
     const request = req.clone({
       url: environment.baseUrl + req.url,
+      setHeaders: {
+        authorization: session ? session.token : '',
+      },
     });
 
     return next.handle(request);

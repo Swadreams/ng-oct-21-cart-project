@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdcutService } from 'src/app/shared/prodcut.service';
+import { Router } from '@angular/router';
+import { ProdcutService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
   productCount = 0;
   isLogin = false;
 
-  constructor(private productService: ProdcutService) {}
+  constructor(private productService: ProdcutService, private router: Router) {}
 
   ngOnInit(): void {
     const session = sessionStorage.getItem('session');
@@ -26,5 +27,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     sessionStorage.clear();
     this.isLogin = false;
+    this.router.navigate(['/login']);
   }
 }
