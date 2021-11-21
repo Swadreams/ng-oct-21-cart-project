@@ -1,1 +1,16 @@
-<p>checkout works!</p>
+<div class="card m-5">
+  <div class="card-body p-5">
+    <div *ngIf="success" class="text-center">
+      <h3 class="text-success">{{ success }}</h3>
+      <button class="btn btn-primary" routerLink="/products">
+        Shop More..
+      </button>
+    </div>
+    <div *ngIf="error" class="text-center">
+      <h3 class="text-danger text-center">{{ error }}</h3>
+      <button class="btn btn-primary" routerLink="/products">
+        Shop More..
+      </button>
+    </div>
+  </div>
+</div>
