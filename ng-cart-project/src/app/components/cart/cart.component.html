@@ -1,1 +1,69 @@
-<p>cart works!</p>
+<app-loader *ngIf="showLoading"></app-loader>
+<div class="card m-5 p-3">
+  <h6>My Cart</h6>
+
+  <div class="ng-empty-cart" *ngIf="!cartItems.length">
+    <div>
+      <img
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt=""
+        width="222"
+        height="162"
+      />
+
+      <h5>Your cart is empty</h5>
+
+      <h6>Add item to it now</h6>
+
+      <button class="btn btn-primary" routerLink="/products">Shop Now</button>
+    </div>
+  </div>
+
+  <div *ngIf="cartItems.length">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Sr. No.</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Image</th>
+          <!-- <th scope="col">Description</th> -->
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of cartItems; let index = index">
+          <th scope="row">{{ index + 1 }}</th>
+          <td style="width: 24%">{{ product.title }}</td>
+          <td>
+            <img [src]="product.image" alt="" height="70px" width="70px" />
+          </td>
+          <!-- <td class="ng-product-description" style="width: 50px">
+            {{ product.description }}
+          </td> -->
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ +product.price * +product.quantity }}</td>
+          <td>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteItem(product._id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-12 ng-cart-buttons">
+        <button class="btn btn-danger me-3">Empty Cart</button>
+        <button class="btn btn-primary me-3">Shop More</button>
+        <button class="btn btn-success">Place Order</button>
+      </div>
+    </div>
+  </div>
+</div>

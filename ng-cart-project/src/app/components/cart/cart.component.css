@@ -1,0 +1,16 @@
+.ng-empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.ng-product-description {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ng-cart-buttons {
+  text-align: right;
+}
