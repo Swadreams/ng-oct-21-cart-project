@@ -8,39 +8,104 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  editDetails = false;
+  editAddress = false;
+  showLoader = false;
   success = '';
   error = '';
-  isLoading = false;
-  profile: any;
-  // profile = {
-  //   address: [],
-  //   email: 'testuser1@gmail.com',
+  // profile: any = {
+  //   address: [
+  //     {
+  //       addressLine1: 'Line 1',
+  //       addressLine2: 'Line2',
+  //       city: 'Pune',
+  //       state: 'MAH',
+  //       title: 'Home',
+  //       zip: '435245',
+  //       _id: '61973be95ed5ef00099f2b6a',
+  //     },
+  //     {
+  //       addressLine1: 'Line 1',
+  //       addressLine2: 'Line2',
+  //       city: 'Pune',
+  //       state: 'MAH',
+  //       title: 'Office',
+  //       zip: '435245',
+  //       _id: '61973be95ed5ef00099f2b6a',
+  //     },
+  //   ],
+  //   email: 'test@test.com',
   //   name: 'Anonymous User',
   //   phone: '0000000000',
   // };
+  profile: any;
 
-  editAddress = false;
-  addressForm = new FormGroup({
-    address: new FormArray([]),
+  detailsForm: any;
+  addressForm = this.fb.group({
+    address: this.fb.array([]),
   });
 
-  editDetails = false;
-  detailsForm = new FormGroup({});
+  address = {
+    title: ['', [Validators.required]],
+    addressLine1: ['', [Validators.maxLength(20)]],
+    addressLine2: ['', [Validators.maxLength(20)]],
+    city: ['', [Validators.maxLength(10), Validators.required]],
+    zip: ['', [Validators.maxLength(6), Validators.required]],
+    state: ['', [Validators.maxLength(15), Validators.required]],
+  };
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.getUserProfile();
+    this.fetchProfile();
   }
 
-  createDetailsForm() {
+  fetchProfile() {
+    this.showLoader = true;
+    this.authService
+      .getProfile()
+      .subscribe(
+        (response) => {
+          this.profile = response;
+        },
+        (error) => console.log(error)
+      )
+      .add(() => {
+        this.showLoader = false;
+      });
+  }
+
+  createDetailsForm(): void {
     this.detailsForm = this.fb.group({
-      name: [this.profile.name, Validators.required],
-      phone: [this.profile.phone, Validators.required],
+      name: [this.profile.name, [Validators.required]],
+      phone: [
+        this.profile.phone,
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+        ],
+      ],
     });
   }
 
-  toggleDetails() {
+  addAddressForm() {
+    const address = this.addressForm.controls.address as FormArray;
+    address.push(
+      this.fb.group({
+        title: ['', [Validators.required]],
+        addressLine1: ['', [Validators.maxLength(20)]],
+        addressLine2: ['', [Validators.maxLength(20)]],
+        city: ['', [Validators.maxLength(10), Validators.required]],
+        zip: ['', [Validators.maxLength(6), Validators.required]],
+        state: ['', [Validators.maxLength(15), Validators.required]],
+      })
+    );
+
+    this.editAddress = true;
+  }
+
+  toggleDetailsEdit() {
     this.editDetails = !this.editDetails;
 
     if (this.editDetails) {
@@ -48,84 +113,87 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  updateProfile() {
-    this.isLoading = true;
+  toggleAddressEdit() {
+    this.editAddress = !this.editAddress;
+  }
+
+  saveDetails() {
+    this.showLoader = true;
     this.authService
       .updateProfile(this.detailsForm.value)
       .subscribe(
         () => {
-          this.editDetails = false;
-          this.getUserProfile();
-          this.success = 'Profile details updated successfully.';
-          setTimeout(() => {
-            this.success = '';
-          }, 2000);
+          this.toggleDetailsEdit();
+          this.fetchProfile();
+          this.success = 'Details updated successfully.';
         },
         () => {
-          this.error = 'Can not update profile at the moment.';
-          setTimeout(() => {
-            this.success = '';
-          }, 2000);
+          this.error =
+            'Error occurred while updating details. Please try after some time.';
         }
       )
       .add(() => {
-        this.isLoading = false;
+        this.removeMessage();
+        this.showLoader = false;
       });
   }
 
-  getUserProfile() {
-    this.isLoading = true;
+  removeMessage() {
+    setTimeout(() => {
+      this.success = '';
+      this.error = '';
+    }, 2000);
+  }
+
+  saveAddress() {
+    console.log(this.addressForm.value);
+    this.showLoader = true;
     this.authService
-      .getProfile()
+      .updateAddress(this.addressForm.value)
       .subscribe(
-        (response) => {
-          console.log(response);
-          this.profile = response;
+        () => {
+          this.discardAddress();
+          this.toggleAddressEdit();
+          this.fetchProfile();
+          this.success = 'Address updated successfully.';
         },
-        (error) => console.log(error)
+        () => {
+          this.error =
+            'Error occurred while updating address. Please try after some time.';
+        }
       )
       .add(() => {
-        this.isLoading = false;
+        this.removeMessage();
+        this.showLoader = false;
       });
   }
 
-  toggleAddress() {
-    this.editAddress = !this.editAddress;
-  }
-
-  createAddressForm() {
-    const address = this.addressForm.controls.address as FormArray;
-
-    address.controls.push(
-      this.fb.group({
-        title: ['', [Validators.required, Validators.minLength(4)]],
-        addressLine1: '',
-        addressLine2: '',
-        city: ['', [Validators.required, Validators.minLength(3)]],
-        zip: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(6),
-          ],
-        ],
-        state: ['', [Validators.required, Validators.minLength(3)]],
-      })
-    );
-    console.log(this.addressForm);
-  }
-
-  showAddressForm() {
-    this.editAddress = true;
-    this.createAddressForm();
-  }
-
-  addAddress() {
-    console.log(this.addressForm.value);
+  discardAddress() {
+    // this.addressForm.controls.address.push(new FormGroup({}));
+    (this.addressForm.controls.address as FormArray).clear();
   }
 
   trackByFn(index: any, item: any) {
     return index;
+  }
+
+  daleteAddress(id: string) {
+    this.showLoader = true;
+    this.authService
+      .removeAddress(id)
+      .subscribe(
+        () => {
+          this.success = 'Address deleted successfully.';
+          this.fetchProfile();
+        },
+        () => {
+          this.error =
+            'Error occurred while deleting address. Please try after some time.';
+        }
+      )
+      .add(() => {
+        this.removeMessage();
+        this.showLoader = false;
+      });
   }
 }
